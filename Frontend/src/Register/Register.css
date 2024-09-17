@@ -1,0 +1,18 @@
+.open_eye {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Error styling */
+.input_error {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+.formik_error {
+    color: red !important;
+    font-size: 12px !important;
+    margin-top: 5px;
+}

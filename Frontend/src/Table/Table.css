@@ -1,0 +1,111 @@
+.Table_maindiv {
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.Table_div {
+    width: 90%;
+}
+
+.Table_div h1 {
+    text-align: center;
+}
+
+.Table_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.Table_heading_buttondiv {
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 5px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.delete_btn,
+.edit_btn {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, #3983CC 0%, #0056B8 100%);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete_btn {
+    background: red;
+}
+
+.table_btn_div {
+    display: flex;
+    gap: 5px;
+}
+
+.delete_btn:hover,
+.edit_btn:hover {
+    opacity: 0.7;
+}
+
+.TableHeading_div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.TableHeading_div .logoutbutton {
+    position: absolute;
+    right: 0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+
+.TableHeading_div .logoutbutton:hover {
+    opacity: 0.8;
+}
+
+.createbutton:hover {
+    opacity: 0.8;
+}
+
+.createbutton {
+    position: absolute;
+    right: 105px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(90deg, #3983CC 0%, #0056B8 100%);
+    color: white;
+    cursor: pointer;
+}

@@ -1,0 +1,62 @@
+.login_Maindiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_div {
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.login_div h1 {
+    text-align: center;
+}
+
+.login_Inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login_Inputs input {
+    width: 100%;
+    height: 44px;
+    padding-left: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.login_Inputs select {
+    width: 100%;
+    height: 44px;
+    padding-left: 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+
+.Login_button {
+    padding: 15px 70px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    background: linear-gradient(90deg, #3983CC 0%, #0056B8 100%);
+    color: white;
+}
+
+.Login_button:hover {
+    opacity: 0.8;
+}

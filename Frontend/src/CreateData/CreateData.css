@@ -1,0 +1,68 @@
+.CreateData_div {
+    width: 500px;
+    height: 500px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.CreateData_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.CreateData_div h2 {
+    text-align: center;
+}
+
+.CreateData_heading_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.close_icon {
+    font-size: 25px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.close_icon:hover {
+    opacity: 0.7;
+}
+
+.CREATE_BTN {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background: linear-gradient(90deg, #3983CC 0%, #0056B8 100%);
+    cursor: pointer;
+}
+
+.CREATE_BTN:hover {
+    opacity: 0.7;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
