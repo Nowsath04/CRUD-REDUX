@@ -68,6 +68,7 @@ exports.UpdateData = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { FirstName, LastName, Email, DOB, Gender, Role, Mobile } = req.body;
 
+    // Check if the data with the given ID exists
     const data = await dataModel.findById(id);
 
     if (!data) {
@@ -77,7 +78,8 @@ exports.UpdateData = asyncHandler(async (req, res) => {
         });
     }
 
-    // Optional: Check if the new email is already in use by another user
+    // Check if the new email is already in use by another user
+
     if (Email && Email !== data.Email) {
         const emailExists = await dataModel.findOne({ Email: Email });
         if (emailExists) {
@@ -88,21 +90,24 @@ exports.UpdateData = asyncHandler(async (req, res) => {
         }
     }
 
-    // Update the data
-    data.FirstName = FirstName || data.FirstName;
-    data.LastName = LastName || data.LastName;
-    data.Email = Email || data.Email;
-    data.DOB = DOB || data.DOB;
-    data.Gender = Gender || data.Gender;
-    data.Role = Role || data.Role;
-    data.Mobile = Mobile || data.Mobile;
-
-    await data.save();
+    const updatedData = await dataModel.findByIdAndUpdate(
+        id,
+        {
+            FirstName: FirstName,
+            LastName: LastName,
+            Email: Email,
+            DOB: DOB,
+            Gender: Gender,
+            Role: Role,
+            Mobile: Mobile,
+        },
+        { new: true }
+    );
 
     res.status(200).json({
         success: true,
         message: "Data updated successfully",
-        data,
+        updatedData,
     });
 });
 

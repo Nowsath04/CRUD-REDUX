@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { basicSchema } from './ValidationSchema';
 import { CreateNewData, getSingle, updateAction } from '../Actions/dataAction';
@@ -55,7 +55,9 @@ const EditData = ({ }) => {
             <form onSubmit={handleSubmit} className="CreateData_div">
                 <div className='CreateData_heading_div'>
                     <h2>EDIT</h2>
-                    <IoCloseCircleOutline className='close_icon' />
+                    <Link style={{ color: "black" }} to={"/"}>
+                        <IoCloseCircleOutline className='close_icon' />
+                    </Link>
                 </div>
                 <div className='login_Inputs'>
                     <div>

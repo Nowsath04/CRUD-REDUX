@@ -70,7 +70,6 @@ exports.Logout = asyncHandler(async (req, res) => {
 exports.Profile = asyncHandler(async (req, res) => {
 
     const user = req.user;
-    console.log(user);
     try {
         res.status(200).json({
             message: "User profile successfully",

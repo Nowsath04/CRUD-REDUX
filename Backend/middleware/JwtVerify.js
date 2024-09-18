@@ -13,7 +13,6 @@ exports.JwtVerify = async (req, res, next) => {
             if (err) {
                 return next(new ErrorHandler("Invalid Token", 403));
             }
-            console.log(decoded);
             req.user = await userModel.findById(decoded.userid);
             if (!req.user) {
                 return next(new ErrorHandler("User not found", 404));
