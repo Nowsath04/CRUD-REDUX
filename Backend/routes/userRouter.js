@@ -1,5 +1,5 @@
 const express = require("express");
-const { Register, Login, Alluser, Logout, Profile } = require("../controllers/userController");
+const { Register, Login, Alluser, Logout, Profile, ForgotPassWord, resetPassword } = require("../controllers/userController");
 const { JwtVerify } = require("../middleware/JwtVerify");
 
 
@@ -10,6 +10,8 @@ router.post("/login", Login)
 router.get("/alluser", Alluser)
 router.get("/logout", Logout)
 router.get("/profile", JwtVerify, Profile)
+router.post("/forgot-password", ForgotPassWord)
+router.post("/reset-password/:id/:token", resetPassword)
 
 
 module.exports = router;

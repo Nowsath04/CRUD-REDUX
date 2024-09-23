@@ -9,7 +9,7 @@ exports.JwtVerify = async (req, res, next) => {
             return next(new ErrorHandler("You are Unauthorized", 401));
         }
 
-        jwt.verify(token, "crud", async (err, decoded) => {
+        jwt.verify(token, process.env.JWTSECRET, async (err, decoded) => {
             if (err) {
                 return next(new ErrorHandler("Invalid Token", 403));
             }

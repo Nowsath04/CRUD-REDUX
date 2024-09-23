@@ -65,15 +65,63 @@ const UserSlice = createSlice({
                 loading: true,
             }
         },
+        ForgotRequest(state, action) {
+            return {
+                ...state,
+                loading: true,
+            }
+        },
+        ForgotSuccess(state, action) {
+            return {
+                loading: false,
+            }
+        },
+        ForgotError(state, action) {
+            return {
+                ...state,
+                loading: true,
+            }
+        },
         Logout(state, action) {
             return {
                 isAuthentication: false,
                 user: null
             }
         },
+        resetRequest(state, action) {
+            return {
+                ...state,
+                loading: true,
+            }
+        },
+        resetSuccess(state, action) {
+            return {
+                loading: false,
+                user: action.payload
+            }
+        },
+        resetError(state, action) {
+            return {
+                ...state,
+                loading: true,
+            }
+        },
     }
 })
 
-export const { registerRequest, registerSuccess, registerError, LoginRequest, LoginSuccess, LoginError, Logout, ProfileRequest, ProfileSuccess, ProfileError } = UserSlice.actions;
+export const {
+    ForgotRequest,
+    ForgotSuccess,
+    ForgotError,
+    registerRequest,
+    registerSuccess,
+    registerError, LoginRequest,
+    LoginSuccess, LoginError,
+    Logout, ProfileRequest,
+    ProfileSuccess,
+    resetRequest,
+    resetSuccess,
+    resetError,
+    ProfileError } = UserSlice.actions;
 
 export default UserSlice.reducer;

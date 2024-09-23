@@ -10,6 +10,8 @@ import store from './store';
 import { GetProfile } from './Actions/userAction';
 import ProtectionRouter from './ProtectionRouter/ProtectionRouter';
 import EditData from './EditData/EditData';
+import Forgot from './ForgotPass/Forgot';
+import ResetPass from './ResetPass/ResetPass';
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
           } />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/forgot-password' element={<Forgot />} />
+          <Route path='/reset-password/:id/:token' element={<ResetPass />} />
           <Route path='/edit/:id' element={<EditData />} />
         </Routes>
       </BrowserRouter>

@@ -86,6 +86,15 @@ const Login = () => {
                             eye ? <FaRegEye className='open_eye' onClick={() => setEye(false)} /> :
                                 <FaRegEyeSlash className='open_eye' onClick={() => setEye(true)} />
                         }
+                        <Link
+                            style={{
+                                position: "absolute",
+                                whiteSpace: "nowrap",
+                                bottom: "-20px",
+                                right: "0",
+                                fontSize: "14px"
+                            }}
+                            to={"/forgot-password"}>Forgot Password</Link>
                     </div>
                 </div>
                 <button type='submit' className='Login_button'>Login</button>

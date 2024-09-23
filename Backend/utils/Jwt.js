@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 exports.jwt = async (user, res) => {
     try {
-        const token = await jwt.sign({ userid: user._id, }, "crud", {
+        const token = await jwt.sign({ userid: user._id, }, process.env.JWTSECRET, {
             expiresIn: "1d"
         });
 

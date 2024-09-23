@@ -1,6 +1,6 @@
 import axios from "axios"
 import { API_URL } from './../Constant/Url';
-import { LoginError, LoginRequest, LoginSuccess, Logout, ProfileError, ProfileRequest, ProfileSuccess, registerError, registerRequest, registerSuccess } from "../Slices/userSlice";
+import { ForgotError, ForgotRequest, ForgotSuccess, LoginError, LoginRequest, LoginSuccess, Logout, ProfileError, ProfileRequest, ProfileSuccess, registerError, registerRequest, registerSuccess, resetError, resetRequest, resetSuccess } from "../Slices/userSlice";
 import { toast } from "react-toastify";
 
 
@@ -50,5 +50,35 @@ export const GetProfile = async (dispatch) => {
     } catch (error) {
         dispatch(ProfileError(error.response))
         console.log(error);
+    }
+}
+
+export const ForgotPass = (values, setLoading, navigator) => async (dispatch) => {
+    setLoading(true)
+    try {
+        dispatch(ForgotRequest())
+        const { data } = await axios.post(`${API_URL}/auth/forgot-password`, values, { withCredentials: true });
+        dispatch(ForgotSuccess())
+        setLoading(false)
+        navigator("/login")
+        toast.success("Email sent successfully")
+    } catch (error) {
+        dispatch(ForgotError(error))
+        console.log(error);
+        toast.error(error.response.data.message);
+    }
+}
+
+export const ResetPassword = (values, id, token, navigator) => async (dispatch) => {
+    try {
+        dispatch(resetRequest())
+        const { data } = await axios.post(`${API_URL}/auth/reset-password/${id}/${token}`, values, { withCredentials: true });
+        dispatch(resetSuccess())
+        toast.success("Password Changed successfully")
+        navigator("/login")
+    } catch (error) {
+        dispatch(resetError(error))
+        console.log(error);
+        toast.error(error.response.data.message);
     }
 }
