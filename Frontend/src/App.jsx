@@ -12,6 +12,7 @@ import ProtectionRouter from './ProtectionRouter/ProtectionRouter';
 import EditData from './EditData/EditData';
 import Forgot from './ForgotPass/Forgot';
 import ResetPass from './ResetPass/ResetPass';
+import Animation from './Animation/Animation';
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path='/' element={
+          <Route path='/table' element={
             <ProtectionRouter>
               <Table />
             </ProtectionRouter>
@@ -34,6 +35,7 @@ function App() {
           <Route path='/forgot-password' element={<Forgot />} />
           <Route path='/reset-password/:id/:token' element={<ResetPass />} />
           <Route path='/edit/:id' element={<EditData />} />
+          <Route path='/' element={<Animation />} />
         </Routes>
       </BrowserRouter>
     </>

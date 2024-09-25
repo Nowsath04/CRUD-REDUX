@@ -56,7 +56,7 @@ const UserSlice = createSlice({
             return {
                 loading: false,
                 isAuthentication: true,
-                user: action.payload.user
+                profile: action.payload
             }
         },
         ProfileError(state, action) {

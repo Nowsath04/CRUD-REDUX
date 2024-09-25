@@ -126,27 +126,22 @@ exports.ForgotPassWord = asyncHandler(async (req, res) => {
 });
 
 
-// Controller to handle password reset
 exports.resetPassword = asyncHandler(async (req, res) => {
     const { password } = req.body;
     const { id, token } = req.params;
 
 
-    // Step 2: Verify the token
     try {
         const decoded = JWT.verify(token, process.env.JWTSECRET);
 
-        // Step 3: Find the user by id
         const user = await userModel.findById(id);
         if (!user || user._id.toString() !== decoded.id) {
             return res.status(400).json({ message: "Invalid token or user" });
         }
 
-        // Step 4: Hash the new password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Step 5: Update the user's password
         user.password = hashedPassword;
         await user.save();
 
@@ -155,4 +150,3 @@ exports.resetPassword = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: "Token is invalid or expired" });
     }
 });
-

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createError, createRequest, createSuccess, dataError, dataRequest, dataSuccess, getSingleError, getSingleRequest, getSingleSuccess, updateError, updateRequest, updateSuccess } from "../Slices/dataSlice";
+import { createError, createRequest, createSuccess, dataError, dataRequest, dataSuccess, favourError, favourRequest, favourSuccess, getfavourError, getfavourRequest, getfavourSuccess, getSingleError, getSingleRequest, getSingleSuccess, updateError, updateRequest, updateSuccess } from "../Slices/dataSlice";
 import { API_URL } from './../Constant/Url';
 import { toast } from 'react-toastify';
 
@@ -59,6 +59,44 @@ export const updateAction = (id, values, navicate) => async (dispatch) => {
         navicate("/")
     } catch (error) {
         dispatch(updateError())
+        toast.error(error.response.data.message);
+    }
+}
+
+
+export const FavouriteAction = (values, setFavour, setDone) => async (dispatch) => {
+    try {
+        dispatch(favourRequest())
+        const { data } = await axios.post(`${API_URL}/data/favourite`, values, { withCredentials: true })
+        console.log(data.message);
+        dispatch(favourSuccess(data))
+        setDone(prev => prev + 1);
+        if (data.message == "successfully added") {
+            setFavour(true)
+            toast.success("favorites added", {
+                className: "custom-toast"
+            })
+        }
+        if (data.message == "successfully removed") {
+            setFavour(false)
+            toast.error("favorites removed", {
+                className: "custom-toast"
+            })
+        }
+    } catch (error) {
+        dispatch(favourError())
+        toast.error(error.response.data.message);
+    }
+}
+
+export const GetFavouriteAction = (id) => async (dispatch) => {
+    try {
+        dispatch(getfavourRequest())
+        const { data } = await axios.get(`${API_URL}/data/get-favourite/${id}`, { withCredentials: true })
+        console.log(data.favouriteData);
+        dispatch(getfavourSuccess(data.favouriteData))
+    } catch (error) {
+        dispatch(getfavourError())
         toast.error(error.response.data.message);
     }
 }

@@ -1,99 +1,94 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const DataSlice = createSlice({
     name: "data",
-    Alldata: [],
     initialState: {
         isAuthentication: false,
         loading: false,
+        Alldata: [],
+        getFavour: [],
+        updatedata: null,
     },
     reducers: {
-        createRequest(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        createRequest(state) {
+            state.loading = true;
         },
         createSuccess(state, action) {
-            return {
-                loading: false,
-                isAuthentication: true,
-                data: action.payload
-            }
+            state.loading = false;
+            state.isAuthentication = true;
+            state.data = action.payload; // This should add the new data
         },
-        createError(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        createError(state) {
+            state.loading = false;  // Handle error by stopping loading
         },
-        dataRequest(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        dataRequest(state) {
+            state.loading = true;
         },
         dataSuccess(state, action) {
-            return {
-                loading: false,
-                isAuthentication: true,
-                Alldata: action.payload
-            }
+            state.loading = false;
+            state.isAuthentication = true;
+            state.Alldata = action.payload; // Update Alldata with payload
         },
-        dataError(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        dataError(state) {
+            state.loading = false;
         },
-        getSingleRequest(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        getSingleRequest(state) {
+            state.loading = true;
         },
         getSingleSuccess(state, action) {
-            return {
-                loading: false,
-                isAuthentication: true,
-                updatedata: action.payload
-            }
+            state.loading = false;
+            state.isAuthentication = true;
+            state.updatedata = action.payload; // This adds the updated data
         },
-        getSingleError(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        getSingleError(state) {
+            state.loading = false;
         },
-        updateRequest(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        updateRequest(state) {
+            state.loading = true;
         },
         updateSuccess(state, action) {
-            return {
-                loading: false,
-                isAuthentication: true,
-                updatedata: action.payload
-            }
+            state.loading = false;
+            state.isAuthentication = true;
+            state.updatedata = action.payload;
         },
-        updateError(state, action) {
-            return {
-                ...state,
-                loading: true,
-            }
+        updateError(state) {
+            state.loading = false;
         },
+        favourRequest(state) {
+            state.loading = true;
+        },
+        favourSuccess(state) {
+            state.loading = false;
+        },
+        favourError(state) {
+            state.loading = false;
+        },
+        getfavourRequest(state) {
+            state.loading = true;
+        },
+        getfavourSuccess(state, action) {
+            state.loading = false;
+            state.getFavour = action.payload || []; // Ensure it's an array
+        },
+        getfavourError(state) {
+            state.loading = false;
+        }
     }
-})
+});
 
 export const {
+    getfavourError,
+    getfavourSuccess,
+    getfavourRequest,
+    favourRequest,
+    favourSuccess,
+    favourError,
     createRequest,
     createSuccess,
     createError,
     dataRequest,
-    dataSuccess, dataError,
+    dataSuccess,
+    dataError,
     updateRequest,
     updateSuccess,
     updateError,

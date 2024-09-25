@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
-
     FirstName: {
         type: String
     },
@@ -23,10 +22,14 @@ const dataSchema = new mongoose.Schema({
     Mobile: {
         type: String
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: `Users`,
+    },
 }, {
     timestamps: true
 });
 
-const dataModel = mongoose.model("Data", dataSchema);
+const dataModel = mongoose.model("Datas", dataSchema);
 
 module.exports = dataModel;

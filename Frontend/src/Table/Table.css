@@ -109,3 +109,30 @@ tr:nth-child(even) {
     color: white;
     cursor: pointer;
 }
+
+.star_icon_notfill {
+    fill: red;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.star_icon_fill {
+    fill: red;
+    cursor: pointer;
+    font-size: 20px;
+
+}
+
+.favourite_div {
+    text-align: center;
+}
+
+.table_icon_btn {
+    background: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

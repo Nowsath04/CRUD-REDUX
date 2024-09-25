@@ -1,5 +1,6 @@
 const asyncHandler = require("../middleware/trycatch");
 const dataModel = require("../models/dataModel");
+const userModel = require("../models/userModel");
 
 
 // create a new data
@@ -124,4 +125,67 @@ exports.Deletedata = asyncHandler(async (req, res) => {
         message: "Data deleted successfully",
     })
 
+});
+
+
+// favourite
+
+exports.userFavourite = asyncHandler(async (req, res) => {
+
+    const { userid, id } = req.body;
+
+    const user = await userModel.findOne({ _id: userid })
+
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' })
+    }
+
+    const likedNFT = user.favourites || [];
+
+    if (likedNFT.includes(id)) {
+        user.favourites = likedNFT.filter(dataId => dataId.toString() !== id.toString());
+        await user.save();
+        await user.populate('favourites')
+        res.status(201).json({
+            message: "successfully removed"
+        });
+    } else {
+        user.favourites.push(id)
+        await user.save();
+        await user.populate('favourites')
+        res.status(201).json({
+            message: "successfully added"
+        });
+    }
+
+});
+
+
+exports.GetFavourite = asyncHandler(async (req, res) => {
+    const { userid } = req.params;
+
+    // Use _id to find user
+    const user = await userModel.findOne({ userid })
+
+    if (!user) {
+        return res.status(404).json({ error: "User not found" });
+    }
+
+    const FavouriteDataId = user.favourites;
+
+    if (!FavouriteDataId || FavouriteDataId.length === 0) {
+        return res.status(200).json({ success: true, data: [] });
+    }
+
+    // Find the favourite data
+    const favouriteData = await dataModel.find({ _id: { $in: FavouriteDataId } }).populate('user').exec();
+
+    if (!favouriteData || favouriteData.length === 0) {
+        return res.status(404).json({ error: "Favourite not found" });
+    }
+
+    res.status(200).json({
+        success: true,
+        favouriteData
+    });
 });

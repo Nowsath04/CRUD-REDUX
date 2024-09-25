@@ -11,12 +11,18 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String
     },
+    favourites: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: `Datas`,
+        }
+    ]
 
 }, {
     timestamps: true
 });
 
 
-const userModel = mongoose.model("User", userSchema);
+const userModel = mongoose.model("Users", userSchema);
 
 module.exports = userModel;
