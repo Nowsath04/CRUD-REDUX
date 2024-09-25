@@ -62,7 +62,7 @@ function Animation() {
                         layoutId={selectedItem.id}
                         className="expanded-item"
                         style={{
-                            background: "red",
+                            background: "#fff",
                             padding: "30px",
                             borderRadius: "12px",
                             width: "80%",
